@@ -4,7 +4,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 const Hero = () => {
   return (
     <div>
-      <div className="max-w-[80%] mx-auto grid  lg:grid-cols-2 items-center my-5">
+      <div className="max-w-[80%] mx-auto grid lg:grid-cols-2 items-center my-5">
         <div className="mb-10">
           <h1 className="text-4xl lg:text-5xl text-red-500 font-bold mb-5">
             Do you crave delicious food?

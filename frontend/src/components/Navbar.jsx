@@ -1,11 +1,14 @@
 import React from "react";
 import { AiOutlineUserAdd, AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div>
       <div className="max-w-[80%] mx-auto items-center justify-between p-4 mb-10 hidden lg:flex ">
-        <h1 className="text-red-500 font-bold text-4xl">Foody</h1>
+        <Link to="/">
+          <h1 className="text-red-500 font-bold text-4xl">Foody</h1>
+        </Link>
 
         <nav>
           <ul className="flex items-center uppercase gap-3 text-gray-500">

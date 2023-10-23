@@ -8,7 +8,7 @@ import {
 const Footer = () => {
   return (
     <section id="faq" className="mt-[10rem] bg-red-500 p-[5rem] text-white">
-      <div className="max-w-[80%] lg:max-w-[60%] mx-auto grid lg:grid-cols-3 items-center">
+      <div className="max-w-[80%] lg:max-w-[60%] mx-auto grid lg:grid-cols-3">
         <div className="mb-5">
           <h2 className="text-2xl font-bold mb-5">Working days</h2>
           <ul>

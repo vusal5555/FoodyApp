@@ -8,7 +8,7 @@ const App = () => {
     <>
       <Navbar></Navbar>
 
-      <main>
+      <main className="w-full">
         <Outlet></Outlet>
       </main>
       <Footer></Footer>

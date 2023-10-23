@@ -1,4 +1,5 @@
 import { foodTypes } from "../data/data";
+import { Link } from "react-router-dom";
 
 const Offer = () => {
   return (
@@ -13,7 +14,7 @@ const Offer = () => {
       >
         {foodTypes.map((foodType, index) => {
           return (
-            <div key={index}>
+            <Link to={`/products/${foodType.name}`} key={index}>
               <p className="mb-2 text-xl text-gray-500 font-bold">
                 {foodType.name.toUpperCase()}
               </p>
@@ -24,7 +25,7 @@ const Offer = () => {
                   alt=""
                 />
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

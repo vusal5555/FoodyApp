@@ -9,11 +9,18 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
+import ProductsPage from "./pages/ProductsPage.jsx";
+import ProductPage from "./pages/ProductPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App></App>}>
       <Route index={true} path="/" element={<HomePage></HomePage>}></Route>
+      <Route
+        path="/products/:name"
+        element={<ProductsPage></ProductsPage>}
+      ></Route>
+      <Route path="/product/:id" element={<ProductPage></ProductPage>}></Route>
     </Route>
   )
 );
