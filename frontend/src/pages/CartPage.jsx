@@ -1,17 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { FaTrash } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../slices/cartSlice";
 
 const CartPage = () => {
   const cart = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
 
   const { cartItems, itemsPrice } = cart;
+
+  const deleetHandler = async (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   return (
     <div className="grid grid-cols-2 mt-[5rem]">
       <div className="max-w-[80%] mx-auto flex flex-col gap-[5rem]">
         {cartItems.map((item) => {
           return (
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-4 gap-5">
               <div>
                 <img
                   src={item.img}
@@ -23,6 +31,11 @@ const CartPage = () => {
               <h2>
                 {item.qty} x {item.price} = ${item.qty * item.price}
               </h2>
+              <div>
+                <button onClick={() => deleetHandler(item._id)}>
+                  <FaTrash></FaTrash>
+                </button>
+              </div>
             </div>
           );
         })}

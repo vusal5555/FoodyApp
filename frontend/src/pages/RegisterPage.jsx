@@ -1,24 +1,26 @@
 import { useState } from "react";
-import { useLoginMutation } from "../slices/authSlice";
+import { useRegisterMutation } from "../slices/authSlice";
 import { setCredentials } from "../slices/usersCredentialsSlice";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading, error }] = useLoginMutation();
+  const [register, { isLoading, error }] = useRegisterMutation();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await login({ email, password }).unwrap();
+      const res = await register({ name, email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
-      toast.success("User logged in");
+      toast.success("User registered");
       navigate("/");
     } catch (error) {
       toast.error(error?.data?.message);
@@ -31,6 +33,16 @@ const LoginPage = () => {
         onSubmit={submitHandler}
         className="max-w-[500px] h-full bg-red-500 text-white p-10 mt-[5rem] rounded-md"
       >
+        <div className="flex flex-col gap-2 mb-5">
+          <label>Name</label>
+          <input
+            type="text"
+            className="px-4 py-2 outline-none rounded-md text-black"
+            placeholder="enter name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
         <div className="flex flex-col gap-2 mb-5">
           <label>Email</label>
           <input
@@ -57,13 +69,12 @@ const LoginPage = () => {
         >
           Submit
         </button>
-
         <p className="mt-2">
-          Don't have an account? <Link to="/register">Register</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

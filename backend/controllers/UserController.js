@@ -20,6 +20,15 @@ export const login = asyncHandler(async (req, res) => {
   }
 });
 
+export const logOut = asyncHandler(async (req, res) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expiresIn: new Date(0),
+  });
+
+  res.status(200).json("user logged out");
+});
+
 export const register = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 

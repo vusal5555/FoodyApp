@@ -22,10 +22,10 @@ const ProductsPage = () => {
             <>
               <Link to={`/product/${food._id}`}>
                 <div className="mb-5">
-                  <div className="w-[300px] h-[300px] mx-auto overflow-hidden">
+                  <div>
                     <img
                       src={food.img}
-                      className="w-full h-full object-cover"
+                      className="w-[300px] h-[300px] mx-auto  object-cover"
                       alt=""
                     />
                   </div>

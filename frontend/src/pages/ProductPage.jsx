@@ -29,9 +29,13 @@ const ProductPage = () => {
   };
   return (
     <div>
-      <div className="max-w-[80%] m-auto grid lg:grid-cols-2 gap-[5rem] mt-[3rem]">
+      <div className="max-w-[80%] m-auto grid lg:grid-cols-2 mt-[3rem]">
         <div>
-          <img src={food.img} className="w-full h-full rounded-lg" alt="" />
+          <img
+            src={food.img}
+            className="w-[400px] h-[400px] object-cover m-auto rounded-lg"
+            alt=""
+          />
         </div>
         <div className="flex flex-col gap-[3rem]">
           <h1 className="text-4xl font-bold">{food.name}</h1>

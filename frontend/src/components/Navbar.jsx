@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { cartItems } = useSelector((store) => store.cart);
+  const { userInfo } = useSelector((store) => store.userInfo);
   return (
     <div>
       <div className="max-w-[80%] mx-auto items-center justify-between p-4 mb-10 hidden lg:flex ">
@@ -44,9 +45,13 @@ const Navbar = () => {
             </p>
           </Link>
 
-          <Link to="/login">
-            <p>Sign In</p>
-          </Link>
+          {userInfo ? (
+            <p>{userInfo.name}</p>
+          ) : (
+            <Link to="/login">
+              <p>Sign In</p>
+            </Link>
+          )}
         </div>
       </div>
     </div>
