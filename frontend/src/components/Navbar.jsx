@@ -1,8 +1,10 @@
 import React from "react";
 import { AiOutlineUserAdd, AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const { cartItems } = useSelector((store) => store.cart);
   return (
     <div>
       <div className="max-w-[80%] mx-auto items-center justify-between p-4 mb-10 hidden lg:flex ">
@@ -33,10 +35,18 @@ const Navbar = () => {
           <p className="text-xl">
             <AiOutlineUserAdd></AiOutlineUserAdd>
           </p>
-          <p className="text-xl">
-            <AiOutlineShoppingCart></AiOutlineShoppingCart>
-          </p>
-          <p>Sign In</p>
+          <Link to="/cart">
+            <p className="text-xl relative">
+              <AiOutlineShoppingCart className="w-6 h-6"></AiOutlineShoppingCart>{" "}
+              <span className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 ">
+                {cartItems.reduce((a, c) => a + c.qty, 0)}
+              </span>
+            </p>
+          </Link>
+
+          <Link to="/login">
+            <p>Sign In</p>
+          </Link>
         </div>
       </div>
     </div>
