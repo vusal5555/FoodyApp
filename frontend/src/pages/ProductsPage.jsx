@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../slices/productsSlice";
-import { useEffect, useState } from "react";
+import { Circles } from "react-loader-spinner";
 
 const ProductsPage = () => {
   const { name } = useParams();
@@ -8,11 +8,21 @@ const ProductsPage = () => {
   const { data: foods, isLoading, error } = useGetAllProductsQuery();
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="flex items-center justify-center">
+        <Circles
+          height="80"
+          width="80"
+          radius="9"
+          color="red"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+      </div>
+    );
   }
-  const filteredFoods = Object.values(foods).filter(
-    (food) => food.category === name
-  );
+  const filteredFoods = foods.filter((food) => food.category === name);
 
   return (
     <div>
@@ -25,7 +35,7 @@ const ProductsPage = () => {
                   <div>
                     <img
                       src={food.img}
-                      className="w-[300px] h-[300px] mx-auto  object-cover"
+                      className="w-[300px] h-[300px] mx-auto rounded-md  object-cover"
                       alt=""
                     />
                   </div>

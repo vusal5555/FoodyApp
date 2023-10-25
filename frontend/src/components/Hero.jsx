@@ -27,9 +27,12 @@ const Hero = () => {
             <button className="bg-red-600 px-5 py-2 text-white rounded">
               Order now!
             </button>
-            <button className="bg-red-600 px-5 py-2 text-white rounded flex items-center">
-              See what is avalaible <AiOutlineArrowDown></AiOutlineArrowDown>
-            </button>
+
+            <a href="#offer">
+              <button className="bg-red-600 px-5 py-2 text-white rounded flex items-center">
+                See what is avalaible <AiOutlineArrowDown></AiOutlineArrowDown>
+              </button>
+            </a>
           </div>
         </div>
         <div>

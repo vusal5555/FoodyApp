@@ -1,9 +1,10 @@
 import { foodTypes } from "../data/data";
 import { Link } from "react-router-dom";
+import { Circles } from "react-loader-spinner";
 
 const Offer = () => {
   return (
-    <div className="text-center my-[15rem]">
+    <section className="text-center my-[15rem]" id="offer">
       <p className="text-gray-500 text-2xl">What we offer</p>
       <h1 className="text-4xl text-red-500 font-bold mb-10">
         Best meals in the city
@@ -29,7 +30,7 @@ const Offer = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

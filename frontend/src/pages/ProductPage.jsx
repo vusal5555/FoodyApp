@@ -5,7 +5,8 @@ import { useState } from "react";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Loader from "../components/Loader";
+import { Circles } from "react-loader-spinner";
+
 const ProductPage = () => {
   const { id } = useParams();
   const [qty, setQty] = useState(1);
@@ -16,7 +17,19 @@ const ProductPage = () => {
   const { data: food, isLoading, error } = useGetSingProductQuery(id);
 
   if (isLoading) {
-    return <Loader></Loader>;
+    return (
+      <div className="flex items-center justify-center">
+        <Circles
+          height="80"
+          width="80"
+          radius="9"
+          color="red"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+      </div>
+    );
   }
 
   const addToCartHandler = async () => {
