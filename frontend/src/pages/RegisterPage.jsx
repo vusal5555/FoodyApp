@@ -39,6 +39,7 @@ const RegisterPage = () => {
             type="text"
             className="px-4 py-2 outline-none rounded-md text-black"
             placeholder="enter name"
+            required
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -49,6 +50,7 @@ const RegisterPage = () => {
             type="email"
             className="px-4 py-2 outline-none rounded-md text-black"
             placeholder="enter email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

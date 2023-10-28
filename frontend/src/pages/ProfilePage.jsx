@@ -107,7 +107,7 @@ const ProfilePage = () => {
             </button>
           </form>
         </div>
-        <div className="col-span-12 lg:col-span-9">
+        <div className="col-span-12 overflow-scroll lg:col-span-9">
           <h2 className="text-xl font-bold mb-4">My Orders</h2>
 
           {ordersLoading ? (

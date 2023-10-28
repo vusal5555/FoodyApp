@@ -5,7 +5,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 const Hero = () => {
   return (
     <div>
-      <div className="container m-auto grid md:grid-cols-2 gap-5 p-5">
+      <div className="container m-auto mt-[5rem] grid md:grid-cols-2 gap-5 p-5">
         <div className="mb-10">
           <h1 className="text-3xl lg:text-5xl text-red-500 font-bold mb-5">
             Do you crave delicious food?

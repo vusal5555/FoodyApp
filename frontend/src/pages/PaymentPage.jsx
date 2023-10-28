@@ -44,6 +44,7 @@ const PaymentPage = () => {
             type="radio"
             id="paymentMethod"
             checked
+            required
             value="PayPal"
             onChange={(e) => setPaymentMethod(e.target.value)}
           />

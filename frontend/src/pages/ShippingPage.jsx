@@ -36,6 +36,7 @@ const ShippingPage = () => {
             type="text"
             className="w-full px-4 py-2 rounded-md text-black border border-gray-300 outline-none"
             placeholder="enter address"
+            required
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           ></input>
@@ -46,6 +47,7 @@ const ShippingPage = () => {
             type="text"
             className="w-full px-4 py-2 rounded-md text-black border border-gray-300 outline-none"
             placeholder="enter city"
+            required
             value={city}
             onChange={(e) => setCity(e.target.value)}
           ></input>
@@ -56,6 +58,7 @@ const ShippingPage = () => {
             type="text"
             className="w-full px-4 py-2 rounded-md text-black border border-gray-300 outline-none"
             placeholder="enter postalcode"
+            required
             value={postalcode}
             onChange={(e) => setPostalcode(e.target.value)}
           ></input>
@@ -66,6 +69,7 @@ const ShippingPage = () => {
             type="text"
             className="w-full px-4 py-2 rounded-md text-black border outline-none"
             placeholder="enter country"
+            required
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           ></input>

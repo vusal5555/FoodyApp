@@ -37,6 +37,7 @@ const LoginPage = () => {
             type="email"
             className="px-4 py-2 outline-none rounded-md text-black"
             placeholder="enter email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -47,6 +48,7 @@ const LoginPage = () => {
             type="password"
             className="px-4 py-2 outline-none rounded-md text-black"
             placeholder="enter email"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
