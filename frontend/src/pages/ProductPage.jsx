@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useGetSingProductQuery } from "../slices/productsSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addToCart } from "../slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Circles } from "react-loader-spinner";
+import Loader from "../components/Loader";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -17,19 +18,7 @@ const ProductPage = () => {
   const { data: food, isLoading, error } = useGetSingProductQuery(id);
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center">
-        <Circles
-          height="80"
-          width="80"
-          radius="9"
-          color="red"
-          ariaLabel="loading"
-          wrapperStyle
-          wrapperClass
-        />
-      </div>
-    );
+    return <Loader></Loader>;
   }
 
   const addToCartHandler = async () => {
@@ -40,20 +29,26 @@ const ProductPage = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
-      <div className="max-w-[80%] m-auto grid lg:grid-cols-2 mt-[3rem]">
+      <div className="container mx-auto grid md:grid-cols-2 gap-5 p-5 mt-[10rem]">
         <div>
           <img
             src={food.img}
-            className="w-[400px] h-[400px] object-cover m-auto rounded-lg"
-            alt=""
+            className="w-full h-[500px] m-auto object-cover rounded-lg"
+            alt={food.name}
           />
         </div>
-        <div className="flex flex-col gap-[3rem]">
-          <h1 className="text-4xl font-bold">{food.name}</h1>
-          <div>
-            <h2 className="text-red-400 text-2xl">Price: ${food.price}</h2>
+        <div className="flex flex-col gap-[2rem] border border-gray-300 p-5 rounded-lg">
+          <div className="border border-b-gray-400 border-white py-3">
+            <h1 className="text-4xl font-bold">{food.name}</h1>
+          </div>
+
+          <div className="border border-b-gray-400 border-white py-3">
+            <h2 className="text-red-400 text-2xl">
+              Price: ${food.price * Number(qty)}
+            </h2>
             <select
               data-te-select-init
               className="mt-3"
@@ -69,13 +64,17 @@ const ProductPage = () => {
               <option value="8">8</option>
             </select>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 border border-b-gray-400 border-white py-3">
             <h2 className="text-2xl">Category:</h2>
             <h2 className="bg-red-500 px-6 py-2 text-white rounded-full capitalize">
               {food.category}
             </h2>
           </div>
-          <h3 className="mt-[5rem] text-2xl">Description: abc</h3>
+          <div className="border border-b-gray-400 border-white pb-3">
+            <h3 className="mt-[1rem] text-xl">
+              Free shipping on all orders over $100!
+            </h3>
+          </div>
 
           <button
             className="bg-red-500 px-6 py-2 rounded-full text-white w-[200px] 

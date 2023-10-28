@@ -3,9 +3,12 @@ import { AiOutlineSend } from "react-icons/ai";
 
 const Newsletter = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <section
+      className="flex flex-col items-center justify-center"
+      id="newsletter"
+    >
       <h2 className="text-xl text-gray-700 mb-4 font-bold">
-        Get out latest offers
+        Get our latest offers
       </h2>
       <h1 className="text-4xl text-red-500 mb-10 font-bold">Newsletter</h1>
 
@@ -21,7 +24,7 @@ const Newsletter = () => {
       </form>
 
       <img src={newsletter} className="w-[400px]" alt="" />
-    </div>
+    </section>
   );
 };
 

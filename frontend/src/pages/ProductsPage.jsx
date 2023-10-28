@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../slices/productsSlice";
-import { Circles } from "react-loader-spinner";
+
+import Loader from "../components/Loader";
 
 const ProductsPage = () => {
   const { name } = useParams();
@@ -8,40 +9,28 @@ const ProductsPage = () => {
   const { data: foods, isLoading, error } = useGetAllProductsQuery();
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center">
-        <Circles
-          height="80"
-          width="80"
-          radius="9"
-          color="red"
-          ariaLabel="loading"
-          wrapperStyle
-          wrapperClass
-        />
-      </div>
-    );
+    return <Loader></Loader>;
   }
   const filteredFoods = foods.filter((food) => food.category === name);
 
   return (
     <div>
-      <div className="container m-auto grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 mt-[10rem]">
+      <div className="container m-auto grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-[10rem] p-5">
         {filteredFoods.map((food) => {
           return (
-            <>
+            <div key={food._id}>
               <Link to={`/product/${food._id}`}>
-                <div className="mb-5">
-                  <div>
+                <div className="mb-5 border border-gray-300 p-5 shadow-md">
+                  <div className="h-[300px] w-full">
                     <img
                       src={food.img}
-                      className="w-[300px] h-[300px] mx-auto rounded-md  object-cover"
-                      alt=""
+                      className="w-full h-full rounded-md object-cover"
+                      alt={food.name}
                     />
                   </div>
-                  <div className="w-[300px] m-auto lg:w-full flex items-center justify-between mt-5">
+                  <div className="flex items-center m-auto justify-between mt-5">
                     <p className="text-lg font-bold">{food.name}</p>
-                    <p>
+                    <p className="font-bold">
                       <span className="text-red-500">$</span>
 
                       {food.price}
@@ -49,7 +38,7 @@ const ProductsPage = () => {
                   </div>
                 </div>
               </Link>
-            </>
+            </div>
           );
         })}
       </div>

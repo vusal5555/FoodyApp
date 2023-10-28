@@ -7,8 +7,11 @@ import {
 
 const Footer = () => {
   return (
-    <div className="mt-[10rem] bg-red-500 p-[5rem] text-white">
-      <div className="max-w-[80%] lg:max-w-[60%] mx-auto grid lg:grid-cols-3">
+    <section
+      className="mt-[10rem] bg-red-500 p-[5rem] text-white"
+      id="contacts"
+    >
+      <div className="container m-auto grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         <div className="mb-5">
           <h2 className="text-2xl font-bold mb-5">Working days</h2>
           <ul>
@@ -42,7 +45,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

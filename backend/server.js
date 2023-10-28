@@ -5,8 +5,8 @@ import connect from "./db/db.js";
 import { notFound, errorHandler } from "./middlewares/errorHandler.js";
 import ProductRouter from "./routes/ProductRoutes.js";
 import UserRouter from "./routes/UserRoutes.js";
+import OrderRouter from "./routes/OrderRoutes.js";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 
 const app = express();
 
@@ -18,6 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/api/products", ProductRouter);
 app.use("/api/users", UserRouter);
+app.use("/api/orders", OrderRouter);
+
+app.get("/api/config/paypal", (req, res) =>
+  res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
+);
 
 app.use(notFound);
 app.use(errorHandler);

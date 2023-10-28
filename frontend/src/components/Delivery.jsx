@@ -5,11 +5,11 @@ import deliveryImg3 from "../assets/deliveryman-with-pizza.svg";
 const Delivery = () => {
   return (
     <div className="text-center my-[15rem]">
-      <p className="text-gray-500 text-2xl">Delivery</p>
-      <h1 className="text-4xl text-red-500 font-bold mb-5">
+      <p className="text-gray-500 text-xl lg:text-2xl">Delivery</p>
+      <h1 className="text-3xl lg:text-4xl text-red-500 font-bold mb-5">
         Always on time for you
       </h1>
-      <div className="max-w-[80%] mx-auto grid items-center lg:grid-cols-3">
+      <div className="container m-auto grid md:grid-cols-2 lg:grid-cols-3 gap-y-10">
         <div>
           <img src={deliveryImg1} className="w-[300px] mx-auto h-full" alt="" />
           <p className="text-gray-500 text-xl font-bold">

@@ -2,13 +2,30 @@ import React from "react";
 import { AiOutlineUserAdd, AiOutlineShoppingCart } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useLogOutMutation } from "../slices/authSlice";
+import { useDispatch } from "react-redux";
+import { unsetCredentials } from "../slices/usersCredentialsSlice";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { cartItems } = useSelector((store) => store.cart);
   const { userInfo } = useSelector((store) => store.userInfo);
+
+  const dispatch = useDispatch();
+  const [logOut, { isLoading, error }] = useLogOutMutation();
+
+  const logOutHandler = async () => {
+    try {
+      await logOut();
+      dispatch(unsetCredentials());
+      toast.success("User logged out");
+    } catch (error) {
+      toast.error(error?.data?.message);
+    }
+  };
   return (
     <div>
-      <div className="max-w-[80%] mx-auto items-center justify-between p-4 mb-10 hidden lg:flex ">
+      <div className="container m-auto items-center justify-between p-4 mb-10 hidden lg:flex">
         <Link to="/">
           <h1 className="text-red-500 font-bold text-4xl">Foody</h1>
         </Link>
@@ -16,26 +33,21 @@ const Navbar = () => {
         <nav>
           <ul className="flex items-center uppercase gap-3 text-gray-500">
             <li>
-              <a>Home</a>
+              <a href="#">Home</a>
             </li>
             <li>
-              <a>Contacts</a>
+              <a href="#contacts">Contacts</a>
             </li>
             <li>
-              <a>Foods</a>
+              <a href="#foods">Foods</a>
             </li>
             <li>
-              <a>FAQ</a>
-            </li>
-            <li>
-              <a>CREATE</a>
+              <a href="#newsletter">Newsletter</a>
             </li>
           </ul>
         </nav>
+
         <div className="flex items-center gap-4">
-          <p className="text-xl">
-            <AiOutlineUserAdd></AiOutlineUserAdd>
-          </p>
           <Link to="/cart">
             <p className="text-xl relative">
               <AiOutlineShoppingCart className="w-6 h-6"></AiOutlineShoppingCart>{" "}
@@ -46,12 +58,16 @@ const Navbar = () => {
           </Link>
 
           {userInfo ? (
-            <p>{userInfo.name}</p>
+            <Link to="/profile">
+              <p>{userInfo.name}</p>
+            </Link>
           ) : (
             <Link to="/login">
               <p>Sign In</p>
             </Link>
           )}
+
+          {userInfo && <button onClick={logOutHandler}>Log Out</button>}
         </div>
       </div>
     </div>

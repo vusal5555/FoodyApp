@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
@@ -8,9 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const { pathname } = useLocation();
 
-  useLayoutEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(() => {
+    if (pathname) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, window]);
+
   return (
     <div>
       <Navbar></Navbar>

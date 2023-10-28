@@ -55,3 +55,38 @@ export const register = asyncHandler(async (req, res) => {
     throw new Error("Invalid credentials");
   }
 });
+
+export const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    res.status(200).json({
+      name: user.name,
+      email: user.email,
+      password: user.password,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+export const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+
+    if (user.password) {
+      user.password = req.body.password || user.password;
+    }
+
+    const updatedUser = await user.save();
+
+    res.status(201).json(updatedUser);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
