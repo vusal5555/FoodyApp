@@ -34,10 +34,14 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 } else {
-  app.listen(PORT, () => {
-    console.log("server is listening");
+  app.get("/", (req, res) => {
+    res.send("hello from server");
   });
 }
 
 app.use(notFound);
 app.use(errorHandler);
+
+app.listen(PORT, () => {
+  console.log("server is listening");
+});
