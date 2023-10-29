@@ -4,6 +4,7 @@ import { setCredentials } from "../slices/usersCredentialsSlice";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -47,7 +48,7 @@ const LoginPage = () => {
           <input
             type="password"
             className="px-4 py-2 outline-none rounded-md text-black"
-            placeholder="enter email"
+            placeholder="enter password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -59,6 +60,8 @@ const LoginPage = () => {
         >
           Submit
         </button>
+
+        {isLoading && <Loader></Loader>}
 
         <p className="mt-2">
           Don't have an account? <Link to="/register">Register</Link>

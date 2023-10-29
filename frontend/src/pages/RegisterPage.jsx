@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -60,7 +61,7 @@ const RegisterPage = () => {
           <input
             type="password"
             className="px-4 py-2 outline-none rounded-md text-black"
-            placeholder="enter email"
+            placeholder="enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -71,6 +72,9 @@ const RegisterPage = () => {
         >
           Submit
         </button>
+
+        {isLoading && <Loader></Loader>}
+
         <p className="mt-2">
           Already have an account? <Link to="/login">Login</Link>
         </p>
