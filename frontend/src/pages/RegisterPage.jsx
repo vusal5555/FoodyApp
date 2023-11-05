@@ -77,7 +77,6 @@ const RegisterPage = () => {
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
-      {isLoading && <Loader></Loader>}
     </div>
   );
 };
