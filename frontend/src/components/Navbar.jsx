@@ -51,11 +51,11 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           {userInfo ? (
             <Link to="/profile">
-              <p>{userInfo.name}</p>
+              <button type="button">{userInfo.name}</button>
             </Link>
           ) : (
             <Link to="/login">
-              <p>Sign In</p>
+              <button type="button">Sign In</button>
             </Link>
           )}
 

@@ -28,43 +28,47 @@ const LoginPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <form
-        onSubmit={submitHandler}
-        className="max-w-[500px] h-full bg-red-500 text-white p-10 mt-[5rem] rounded-md"
-      >
-        <div className="flex flex-col gap-2 mb-5">
-          <label>Email</label>
-          <input
-            type="email"
-            className="px-4 py-2 outline-none rounded-md text-black"
-            placeholder="enter email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="flex flex-col gap-2 mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            className="px-4 py-2 outline-none rounded-md text-black"
-            placeholder="enter password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-yellow-500 text-white w-full px-4 py-2 rounded-md"
+      {isLoading ? (
+        <Loader></Loader>
+      ) : (
+        <form
+          onSubmit={submitHandler}
+          className="max-w-[500px] h-full bg-red-500 text-white p-10 mt-[5rem] rounded-md"
         >
-          Submit
-        </button>
+          <div className="flex flex-col gap-2 mb-5">
+            <label>Email</label>
+            <input
+              type="email"
+              className="px-4 py-2 outline-none rounded-md text-black"
+              placeholder="enter email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-2 mb-3">
+            <label>Password</label>
+            <input
+              type="password"
+              className="px-4 py-2 outline-none rounded-md text-black"
+              placeholder="enter password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-yellow-500 text-white w-full px-4 py-2 rounded-md"
+          >
+            Submit
+          </button>
 
-        <p className="mt-2">
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
-      </form>
+          <p className="mt-2">
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+        </form>
+      )}
     </div>
   );
 };
