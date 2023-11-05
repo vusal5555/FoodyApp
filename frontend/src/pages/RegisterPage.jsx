@@ -73,12 +73,11 @@ const RegisterPage = () => {
           Submit
         </button>
 
-        {isLoading && <Loader></Loader>}
-
         <p className="mt-2">
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
+      {isLoading && <Loader></Loader>}
     </div>
   );
 };

@@ -61,12 +61,11 @@ const LoginPage = () => {
           Submit
         </button>
 
-        {isLoading && <Loader></Loader>}
-
         <p className="mt-2">
           Don't have an account? <Link to="/register">Register</Link>
         </p>
       </form>
+      {isLoading && <Loader></Loader>}
     </div>
   );
 };
